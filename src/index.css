@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-minecraft-dark;
+  }
+
+  /* Modern Scrollbar Styling */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-black/20 backdrop-blur;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-minecraft-blue/50 backdrop-blur rounded-full border-2 border-transparent bg-clip-padding;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-minecraft-blue/70;
+  }
+
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.minecraft.blue') transparent;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .perspective-2000 {
+    perspective: 2000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes cursor-flame {
+  0%, 100% {
+    opacity: 1;
+    transform: scaleY(1) translateY(0);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scaleY(1.2) translateY(-2px);
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 15s ease infinite;
+}
+
+.animate-cursor-flame {
+  animation: cursor-flame 0.6s ease-in-out infinite;
+}
+
+.hover-3d {
+  transition: transform 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.hover-3d:hover {
+  transform: translateZ(20px) rotateX(2deg) rotateY(2deg);
+}
+
+.card-3d {
+  transition: transform 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.card-3d:hover {
+  transform: scale(1.02) translateY(-5px);
+}
+
+.glass-effect {
+  @apply bg-white/5 backdrop-blur-sm border border-white/10;
+}
+
+.glass-effect:hover {
+  @apply border-minecraft-blue/30 shadow-lg shadow-minecraft-blue/10;
+}
+
+/* Handwriting underline animation */
+.handwriting-underline {
+  position: relative;
+}
+
+.handwriting-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #27A9E1, #1C7FA9);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: handwriteUnderline 0.5s ease forwards;
+}
+
+@keyframes handwriteUnderline {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* 3D Transform Utilities */
+.translate-z-16 {
+  transform: translateZ(4rem);
+}
+
+.-translate-z-16 {
+  transform: translateZ(-4rem);
+}
+
+.rotate-y-90 {
+  transform: rotateY(90deg);
+}
+
+.rotate-x-90 {
+  transform: rotateX(90deg);
+}
+
+/* Animated Background */
+.animated-bg {
+  background: linear-gradient(45deg, #1a1a1a 25%, transparent 25%),
+              linear-gradient(-45deg, #1a1a1a 25%, transparent 25%),
+              linear-gradient(45deg, transparent 75%, #1a1a1a 75%),
+              linear-gradient(-45deg, transparent 75%, #1a1a1a 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  animation: bg-scroll 20s linear infinite;
+}
+
+@keyframes bg-scroll {
+  0% {
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  }
+  100% {
+    background-position: -20px -20px, -20px -10px, -10px -30px, -30px -20px;
+  }
+}
+
+/* Glowing effect */
+.glow {
+  box-shadow: 0 0 20px theme('colors.minecraft.blue');
+}
+
+/* Blur backdrop */
+.backdrop-blur-xl {
+  backdrop-filter: blur(24px);
+}
