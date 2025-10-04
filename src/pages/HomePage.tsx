@@ -17,9 +17,9 @@ const HeroBackground = () => {
   const blur = useTransform(scrollYProgress, [0, 0.3], [0, 8]);
 
   const images = [
-    "https://portofoliox.github.io/wings.github.io/image1.png",
-    "https://portofoliox.github.io/wings.github.io/image2.png",
-    "https://portofoliox.github.io/wings.github.io/image3.png"
+    "https://antonndev.github.io/wings.github.io/image1.png",
+    "https://antonndev.github.io/wings.github.io/image2.png",
+    "https://antonndev.github.io/wings.github.io/image3.png"
   ];
 
   const [currentImage, setCurrentImage] = useState(0);
